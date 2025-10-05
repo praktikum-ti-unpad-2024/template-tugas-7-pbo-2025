@@ -1,0 +1,127 @@
+name: Autograding Tests
+on:
+  - push
+  - workflow_dispatch
+
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # Soal 1–4: checked exceptions
+    - name: Soal 1
+      id: soal1
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: "Soal 1 - Checked Exception"
+        id: soal1
+        command: "javac soal01/*.java && java soal01.Test"
+        expected-output: "(InterruptedIOException|UnsupportedEncodingException|UTFDataFormatException|ObjectStreamException|InvalidClassException|InvalidObjectException|NotSerializableException|StreamCorruptedException|WriteAbortedException)"
+        comparison-method: regex
+        timeout: 10
+
+    - name: Soal 2
+      id: soal2
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: "Soal 2 - Checked Exception"
+        id: soal2
+        command: "javac soal02/*.java && java soal02.Test"
+        expected-output: "(InterruptedIOException|UnsupportedEncodingException|UTFDataFormatException|ObjectStreamException|InvalidClassException|InvalidObjectException|NotSerializableException|StreamCorruptedException|WriteAbortedException)"
+        comparison-method: regex
+        timeout: 10
+
+    - name: Soal 3
+      id: soal3
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: "Soal 3 - Checked Exception"
+        id: soal3
+        command: "javac soal03/*.java && java soal03.Test"
+        expected-output: "(InterruptedIOException|UnsupportedEncodingException|UTFDataFormatException|ObjectStreamException|InvalidClassException|InvalidObjectException|NotSerializableException|StreamCorruptedException|WriteAbortedException)"
+        comparison-method: regex
+        timeout: 10
+
+    - name: Soal 4
+      id: soal4
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: "Soal 4 - Checked Exception"
+        id: soal4
+        command: "javac soal04/*.java && java soal04.Test"
+        expected-output: "(InterruptedIOException|UnsupportedEncodingException|UTFDataFormatException|ObjectStreamException|InvalidClassException|InvalidObjectException|NotSerializableException|StreamCorruptedException|WriteAbortedException)"
+        comparison-method: regex
+        timeout: 10
+
+    # Soal 5–8: runtime exceptions
+    - name: Soal 5
+      id: soal5
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: "Soal 5 - Runtime Exception"
+        id: soal5
+        command: "javac soal05/*.java && java soal05.Test"
+        expected-output: "(ArithmeticException|ArrayIndexOutOfBoundsException|ClassCastException|IllegalArgumentException|IllegalStateException|NegativeArraySizeException|NoSuchElementException|NullPointerException|NumberFormatException|SecurityException)"
+        comparison-method: regex
+        timeout: 10
+
+    - name: Soal 6
+      id: soal6
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: "Soal 6 - Runtime Exception"
+        id: soal6
+        command: "javac soal06/*.java && java soal06.Test"
+        expected-output: "(ArithmeticException|ArrayIndexOutOfBoundsException|ClassCastException|IllegalArgumentException|IllegalStateException|NegativeArraySizeException|NoSuchElementException|NullPointerException|NumberFormatException|SecurityException)"
+        comparison-method: regex
+        timeout: 10
+
+    - name: Soal 7
+      id: soal7
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: "Soal 7 - Runtime Exception"
+        id: soal7
+        command: "javac soal07/*.java && java soal07.Test"
+        expected-output: "(ArithmeticException|ArrayIndexOutOfBoundsException|ClassCastException|IllegalArgumentException|IllegalStateException|NegativeArraySizeException|NoSuchElementException|NullPointerException|NumberFormatException|SecurityException)"
+        comparison-method: regex
+        timeout: 10
+
+    - name: Soal 8
+      id: soal8
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: "Soal 8 - Runtime Exception"
+        id: soal8
+        command: "javac soal08/*.java && java soal08.Test"
+        expected-output: "(ArithmeticException|ArrayIndexOutOfBoundsException|ClassCastException|IllegalArgumentException|IllegalStateException|NegativeArraySizeException|NoSuchElementException|NullPointerException|NumberFormatException|SecurityException)"
+        comparison-method: regex
+        timeout: 10
+
+        - name: Soal 9
+      id: soal9
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: "Soal 9 - Runtime Exception"
+        id: soal9
+        command: "javac soal09/*.java && java soal09.Test"
+        expected-output: "(ArithmeticException|ArrayIndexOutOfBoundsException|ClassCastException|IllegalArgumentException|IllegalStateException|NegativeArraySizeException|NoSuchElementException|NullPointerException|NumberFormatException|SecurityException)"
+        comparison-method: regex
+        timeout: 10
+
+      - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      with:
+        runners: |
+          soal1
+          soal2
+          soal3
+          soal4
+          soal5
+          soal6
+          soal7
+          soal8
+          soal9
+
